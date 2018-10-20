@@ -1,0 +1,30 @@
+{
+  "name": "grow.flowerpower",
+  "version": "0.0.1",
+  "author": "popcore",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "flower-power-ble": "0.5.1",
+    "noble": "1.9.1",
+    "xpc-connection": "sandeepmistry/node-xpc-connection#26/head"
+  },
+  "resolutions": {
+    "xpc-connection": "sandeepmistry/node-xpc-connection#26/head"
+  },
+  "devDependencies": {
+    "electron": "3.0.5",
+    "electron-builder": "20.28.4"
+  },
+  "build": {
+    "appId": "grow.flowerpower.id",
+    "mac": {
+      "category": ""
+    }
+  }
+}

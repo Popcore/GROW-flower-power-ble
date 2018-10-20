@@ -1,0 +1,8 @@
+# distribution folder
+dist/
+
+# packages
+node_modules/
+
+# misc
+*.log
