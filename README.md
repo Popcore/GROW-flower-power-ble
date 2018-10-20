@@ -24,3 +24,6 @@ To do
 To do
 
 ## To Do
+
+## License
+MIT.
