@@ -13,7 +13,6 @@
         const {ipcRenderer} = require('electron')
 
         ipcRenderer.on('update-battery-level', (event, arg) => {
-          console.log('foobarbaz');
           console.log(arg);
         });
         </script>
