@@ -6,15 +6,14 @@ Installing the application and its dependencies for development purposes require
 - [nodejs] v10.0.0 and above
 - A package manager. Either [Yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com/get-npm) will do.
 
-Once ready to go run
+Once ready to go install the application dependencies
 ```
 yarn install
 ```
-to install the application dependencies and
+and start the application.
 ```
 yarn start
 ```
-to start the application.
 
 ## Distribute
 
