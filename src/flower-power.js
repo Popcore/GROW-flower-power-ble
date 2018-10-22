@@ -1,7 +1,5 @@
 const flowerPower = require('flower-power-ble');
 
-// ipcRenderer.send('update-battery-level', 'batteryLevel');
-
 module.exports = {
   connectToFP: (appWindow) => {
     flowerPower.discoverAll((fp) => {
@@ -12,7 +10,25 @@ module.exports = {
 
         fp.readBatteryLevel((error, batteryLevel) => {
           if (error) { console.log(error); }
+
+          console.log(batteryLevel);
+
           appWindow.webContents.send('update-battery-level', batteryLevel);
+        });
+
+        fp.readSoilMoisture((error, SoilMoisture) => {
+          if (error) { console.log(error); }
+          appWindow.webContents.send('soil-moisture-level', SoilMoisture);
+        });
+
+        fp.readAirTemperature((error, airTemp) => {
+          if (error) { console.log(error); }
+          appWindow.webContents.send('air-temp-level', airTemp);
+        });
+
+        fp.readSoilTemperature((error, soilTemp) => {
+          if (error) { console.log(error); }
+          appWindow.webContents.send('soil-temp-level', soilTemp);
         });
 
         // getFirstIndex(fp)
@@ -24,6 +40,7 @@ module.exports = {
         //     let buf = Buffer.from(history, 'base64');
 
         //     // parse the byes to JSON
+        //     console.log(history);
         //     console.log(JSON.stringify(buf));
         //   })
         //   .catch((err) => {

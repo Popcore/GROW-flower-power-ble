@@ -15,14 +15,10 @@ const createWindow = () => {
 
   // load template
   appWindow.loadURL(url.format({
-    pathname: path.join(__dirname, './templates/index.html'),
+    pathname: path.join(__dirname, './assets/templates/index.html'),
     protocol: 'file:',
     slashes: true
   }));
-
-  appWindow.webContents.on('did-finish-load', () => {
-    appWindow.webContents.send('ping', 'whoooooooh!')
-  })
 
   fp.connectToFP(appWindow);
 }
