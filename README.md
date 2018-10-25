@@ -16,6 +16,11 @@ yarn start
 ```
 
 ## Distribute
+Once the node app has been installed it is possible to create a distribution for the underlying OS with
+```
+yarn dist
+```
+This command will create a new /dist folder and generate an executable of the application that can be installed as a regular software package.
 
 ## Download
 To do
@@ -24,6 +29,15 @@ To do
 To do
 
 ## To Do
+In no specific order:
+
+- [ ] handle connection to multiple sensors
+- [ ] parse sensor historical data
+- [ ] save historical data / push it somewhere
+- [ ] improve error handling
+- [ ] write tests
+- [ ] improve UI
+- [ ] implement user authentication
 
 ## License
 MIT.
