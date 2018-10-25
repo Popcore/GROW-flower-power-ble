@@ -1,8 +1,9 @@
-const { BrowserWindow } = require('electron');
+const { BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 const events = require('./src/app-events');
 const fp = require('./src/flower-power');
+
 var appWindow;
 
 const createWindow = () => {
@@ -20,7 +21,10 @@ const createWindow = () => {
     slashes: true
   }));
 
-  fp.connectToFP(appWindow);
+  // connect to sensor(s) when app is ready
+  ipcMain.on('app-ready', () => {
+    fp.connectToFP(appWindow);
+  });
 }
 
 // listen to events

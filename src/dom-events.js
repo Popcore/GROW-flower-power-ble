@@ -7,7 +7,34 @@
  */
 const { ipcRenderer } = require('electron');
 
-(function() {
+(function () {
+  document.addEventListener('DOMContentLoaded', pageLoaded);
+
+  // notify ipc main when DOM is ready
+  function pageLoaded(){
+    ipcRenderer.send('app-ready');
+  }
+
+  // connecting to sensor
+  ipcRenderer.on('connecting', (event, arg) => {
+    document.getElementById('status-bar').innerHTML += `Connecting... `;
+  });
+
+  // connected to sensor
+  ipcRenderer.on('connected', (event, arg) => {
+    document.getElementById('status-bar').innerHTML = ``;
+  });
+
+  // sensor name
+  ipcRenderer.on('sensor-name', (event, arg) => {
+    document.getElementById('sensor-name').innerHTML += `Sensor Name: ${arg} %`;
+  });
+
+  // serial number
+  ipcRenderer.on('serial-number', (event, arg) => {
+    document.getElementById('serial-number').innerHTML += `Serial Number: ${arg} %`;
+  });
+
   // battery level
   ipcRenderer.on('update-battery-level', (event, arg) => {
     document.getElementById('battery-level').innerHTML += `Battery Level: ${arg} %`;

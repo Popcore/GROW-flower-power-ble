@@ -2,17 +2,28 @@ const flowerPower = require('flower-power-ble');
 
 module.exports = {
   connectToFP: (appWindow) => {
+
+    appWindow.webContents.send('connecting');
+
     flowerPower.discoverAll((fp) => {
       fp.connectAndSetup((error) => {
 
+        appWindow.webContents.send('connected');
+
         if (error) { console.log(error); }
-        console.log('connected');
+
+        fp.readFriendlyName((error, sensorName) => {
+          if (error) { console.log(error); }
+          appWindow.webContents.send('sensor-name', sensorName);
+        });
+
+        fp.readSerialNumber((error, serial) => {
+          if (error) { console.log(error); }
+          appWindow.webContents.send('serial-number', serial);
+        });
 
         fp.readBatteryLevel((error, batteryLevel) => {
           if (error) { console.log(error); }
-
-          console.log(batteryLevel);
-
           appWindow.webContents.send('update-battery-level', batteryLevel);
         });
 
